@@ -16,4 +16,12 @@ cat << EOF | tee -a /etc/pacman.conf
 [chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist
 EOF
+
+# plymouth + theme
+pacman -S plymouth 
+yay -S plymouth-theme-arch-charge
+
+sudo plymouth-set-default-theme arch-charge
+vim /etc/mkinitcpio.conf
+# add plymouth: HOOKS="base systemd plymouth ...
 ----
