@@ -24,4 +24,7 @@ yay -S plymouth-theme-arch-charge
 sudo plymouth-set-default-theme arch-charge
 vim /etc/mkinitcpio.conf
 # add plymouth: HOOKS="base systemd plymouth ...
+
+# vim /etc/default/grub
+vim /boot/
 ----
