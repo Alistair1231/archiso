@@ -28,4 +28,9 @@ vim /etc/mkinitcpio.conf
 # vim /etc/default/grub
 vim /boot/loader/entries/something.conf
 # add: splash loglevel=3 udev.log-priority=3
+
+vim /etc/plymouth/plymouthd.conf
+ShowDelay=0
+
+mkinitcpio -P
 ----
