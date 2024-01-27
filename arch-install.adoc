@@ -29,9 +29,7 @@ vim /etc/mkinitcpio.conf
 vim /boot/loader/entries/something.conf
 # add `splash` too the end of GRUB_CMDLINE_LINUX_DEFAULT 
 # with issues try: loglevel=3 udev.log-priority=3
-
-vim /etc/plymouth/plymouthd.conf
-ShowDelay=0
+grub-mkconfig -o /boot/grub/grub.cfg
 
 mkinitcpio -P
 ----
