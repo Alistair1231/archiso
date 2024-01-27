@@ -18,8 +18,8 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 EOF
 
 # plymouth + theme
-pacman -S plymouth 
-yay -S plymouth-theme-arch-charge
+pacman -S plymouth
+
 
 sudo plymouth-set-default-theme arch-charge
 vim /etc/mkinitcpio.conf
@@ -27,7 +27,8 @@ vim /etc/mkinitcpio.conf
 
 # vim /etc/default/grub
 vim /boot/loader/entries/something.conf
-# add: splash loglevel=3 udev.log-priority=3
+# add `splash` too the end of GRUB_CMDLINE_LINUX_DEFAULT 
+# with issues try: loglevel=3 udev.log-priority=3
 
 vim /etc/plymouth/plymouthd.conf
 ShowDelay=0
