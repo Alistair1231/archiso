@@ -1,1 +1,1 @@
-‎‎​
+docker compose run --rm arch
