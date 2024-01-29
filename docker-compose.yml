@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   arch:
+    hostname: arch-docker
     build:
       context: .
       dockerfile: Dockerfile

@@ -7,9 +7,6 @@ RUN pacman -Syu --noconfirm && \
 # create user al with password al and create home directory
 RUN useradd -m -p $(openssl passwd -1 al) al
 
-# add user al to sudoers
-RUN echo "al ALL=(ALL) ALL" >> /etc/sudoers
-
 # no sudo password for user al
 RUN echo "al ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
@@ -23,7 +20,7 @@ WORKDIR /home/al
 RUN sh <(curl -L https://nixos.org/nix/install) --no-daemon --yes 
 
 # install yay
-RUN echo "adding chaotic-aur repository" && \
+RUN echo "install yay" && \
   git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && \
   makepkg -si --noconfirm && \
   cd .. && \
@@ -40,3 +37,12 @@ RUN echo "adding chaotic-aur repository" && \
   echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist\n" | sudo tee -a /etc/pacman.conf && \
   sudo pacman -Syu --noconfirm
 
+# install zsh and set as default shell
+RUN sudo pacman -S --noconfirm zsh grml-zsh-config && \
+  sudo chsh -s /usr/bin/zsh al && \
+  sudo chsh -s /usr/bin/zsh root
+
+RUN echo "touch .zshrc" && \
+  touch /home/al/.zshrc
+
+ENTRYPOINT [ "/usr/bin/zsh" ]
