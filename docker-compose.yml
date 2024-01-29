@@ -1,1 +1,14 @@
-‎‎​
+version: "3.8"
+services:
+  arch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # - arch-data:/data
+      - ./data:/data
+    # ports:
+    #   - 8080:8080
+
+# volumes:
+#   arch-data:
